@@ -1,0 +1,32 @@
+Setup Apache Kafka broker
+
+1) Download the Kafka Server - 
+https://kafka.apache.org/downloads
+
+2) Extract the tar to a folder.
+
+3) Go to bin/ directory of kafka folder.
+
+4) Start Zookeeper - 
+
+zookeeper-server-start.sh ../config/zookeeper.properties
+
+5) Start Kafka broker - 
+
+kafka-server-start.sh ../config/server.properties
+
+6) Create topic - 
+
+kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic testtopic
+
+7) List all topics -
+
+kafka-topics.sh --list --bootstrap-server localhost:9092
+
+8) Produce messages - 
+
+kafka-console-producer.sh --bootstrap-server localhost:9092 --topic testtopic
+
+9) Consume messages - 
+
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic testtopic --from-beginning
